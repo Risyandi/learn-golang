@@ -1,4 +1,4 @@
-## Membuat Web Services Go dan Gin
+## Membuat Simple Web Services Go dan Gin Framework
 1. Buat folder baru dengan nama "web-service-gin"  
 2. Buka terminal didalam folder yang sebelumnya dibuat.  
  Lalu ketikan perintah pada terminal untuk membuat modul yang akan me manage dependency. Caranya sebagai berikut:   
@@ -7,9 +7,13 @@ Lalu enter dan masukanpath modul kamu
 	- `$ example.com/web-service-gin`  
 Lalu enter dan file go berekstensi ***.mod*** akan dibuat, dan tampilan hasil nya akan seperti ini  
 
-![gambar: hasil pembuatan module](https://link)
+        ![gambar: go mod init dan membuat path pada modul](./images/go_mod_init.png)  
+        *gambar 1 : go mod init dan membuat path pada modul*  
 
-3. buat file baru dengan nama main.go
+        ![gambar: go init success](./images/go_success_mod_init.png)
+        *gambar 2 : go mod init success*  
+
+3. Buat file baru dengan nama ***main.go***
 ```go
 package main
 
@@ -71,24 +75,26 @@ func getAlbumByID(c *gin.Context) {
 }
 
 func main() {
+        // initialization router default
 	router := gin.Default()
 	router.GET("/albums", getAlbums)
+        router.GET("/albums/:id", getAlbumByID)
 	router.POST("/albums", postAlbums)
 
+        // router run on port 8080
 	router.Run("localhost:8080")
 }
 
 ```
-4. ketikan perintah `$ go get .` untuk menginstall modul gin yang diperlukan. setelah proses download dan penambahan modul selesai, maka akan muncul tampilan seperti ini:
+4. Jika sudah membuat beberapa yang dibutuhkan dan membuat router untuk mengalamatkan service yang dibutuhkan.  
+Ketikan perintah `$ go get .` untuk menginstall modul dependency gin yang diperlukan. setelah proses download dan penambahan modul selesai.
 
-![gambar: sukses install module](https://link)
-
-5. lalu jalankan perintah berikut ini untuk menjalankan server.  
+5. Lalu jalankan perintah berikut ini untuk menjalankan server.  
     - `$ go run .` atau `$ go run main.go`
 
-6. tes server dengan mengetik perintah berikut:  
+6. Menjalankan method service yang sebelumnya dibuat dengan metode **POST** menggunakan curl dengan mengetik perintah berikut:  
     - `$ curl -i http://localhost:8080/albums`
-    - `$curl http://localhost:8080/albums \
+    - `$ curl http://localhost:8080/albums \
     --include --header \
     "Content-Type: \
     application/json" --request \
