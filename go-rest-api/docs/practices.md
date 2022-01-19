@@ -10,7 +10,7 @@ Lalu enter dan file go berekstensi ***.mod*** akan dibuat, dan tampilan hasil ny
         ![gambar: go mod init dan membuat path pada modul](./images/go_mod_init.png)  
         *gambar 1 : go mod init dan membuat path pada modul*  
 
-        ![gambar: go init success](./images/go_success_mod_init.png)
+        ![gambar: go init success](./images/go_success_mod_init.png)  
         *gambar 2 : go mod init success*  
 
 3. Buat file baru dengan nama ***main.go***
@@ -19,7 +19,6 @@ package main
 
 import (
 	"net/http"
-
 	"github.com/gin-gonic/gin"
 )
 
@@ -94,6 +93,10 @@ Ketikan perintah `$ go get .` untuk menginstall modul dependency gin yang diperl
 
 6. Menjalankan method service yang sebelumnya dibuat dengan metode **POST** menggunakan curl dengan mengetik perintah berikut:  
     - `$ curl -i http://localhost:8080/albums`
+    - `$ curl http://localhost:8080/albums \
+    --header "Content-Type: \
+    application/json" --request \
+    "GET"`
     - `$ curl http://localhost:8080/albums \
     --include --header \
     "Content-Type: \
