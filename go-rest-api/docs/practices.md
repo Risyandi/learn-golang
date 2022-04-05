@@ -1,9 +1,9 @@
 ## Membuat Simple Web Services Go dan Gin Framework
-1. Buat folder baru dengan nama "web-service-gin"  
+1. Buat folder baru dengan nama **web-service-gin** 
 2. Buka terminal didalam folder yang sebelumnya dibuat.  
- Lalu ketikan perintah pada terminal untuk membuat modul yang akan me manage dependency. Caranya sebagai berikut:   
+ Lalu ketikan perintah pada terminal untuk membuat modul yang akan me mengelola dependency. Caranya sebagai berikut:   
 	- `$ go mod init \`   
-Lalu enter dan masukanpath modul kamu   
+Lalu enter dan masukan path modul kamu   
 	- `$ example.com/web-service-gin`  
 Lalu enter dan file go berekstensi ***.mod*** akan dibuat, dan tampilan hasil nya akan seperti ini  
 
@@ -85,13 +85,13 @@ func main() {
 }
 
 ```
-4. Jika sudah membuat beberapa yang dibutuhkan dan membuat router untuk mengalamatkan service yang dibutuhkan.  
+4. Jika sudah membuat beberapa controller REST API yang dibutuhkan dan membuat router untuk mengalamatkan services yang dibutuhkan.  
 Ketikan perintah `$ go get .` untuk menginstall modul dependency gin yang diperlukan. setelah proses download dan penambahan modul selesai.
 
 5. Lalu jalankan perintah berikut ini untuk menjalankan server.  
     - `$ go run .` atau `$ go run main.go`
 
-6. Menjalankan method service yang sebelumnya dibuat dengan metode **POST** menggunakan curl dengan mengetik perintah berikut:  
+6. Menjalankan metode services yang sebelumnya dibuat dengan metode **POST** bisa menggunakan curl dengan mengetik perintah berikut:  
     - `$ curl -i http://localhost:8080/albums`
     - `$ curl http://localhost:8080/albums \
     --header "Content-Type: \
