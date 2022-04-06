@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+</head>
+<body>
+    <h1>{{.Title}}</h1>
+    <div>Please enter the string you want to generate as Qrcode</div>
+    <form action="generator/" method="post">
+        <input type="text" name="dataString">
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
