@@ -1,5 +1,6 @@
 package main
 
+// import library qrcode
 import (
 	"image/png"
 	"net/http"
@@ -9,10 +10,13 @@ import (
 	"github.com/boombuler/barcode/qr"
 )
 
+// initialize struct Page
 type Page struct {
 	Title string
 }
 
+// main function
+// Call function homeHandler and viewCodeHandler and run server on port 8080
 func main() {
 	http.HandleFunc("/", homeHandler)
 	http.HandleFunc("/generator/", viewCodeHandler)
