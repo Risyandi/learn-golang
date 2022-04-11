@@ -1,7 +1,7 @@
 ## Membuat Simple Web Services Go dan Gin Framework
 1. Buat folder baru dengan nama **web-service-gin** 
 2. Buka terminal didalam folder yang sebelumnya dibuat.  
- Lalu ketikan perintah pada terminal untuk membuat modul yang akan me mengelola dependency. Caranya sebagai berikut:   
+Lalu ketikan perintah pada terminal untuk membuat modul yang akan me mengelola dependency. Caranya sebagai berikut:   
 	- `$ go mod init \`   
 Lalu enter dan masukan path modul kamu   
 	- `$ example.com/web-service-gin`  
@@ -13,7 +13,7 @@ Lalu enter dan file go berekstensi ***.mod*** akan dibuat, dan tampilan hasil ny
         ![gambar: go init success](./images/go_success_mod_init.png)  
         *gambar 2 : go mod init success*  
 
-3. Buat file baru dengan nama ***main.go***
+3. Buat file baru dengan nama ***main.go***  
 ```go
 package main
 
@@ -83,7 +83,6 @@ func main() {
         // router run on port 8080
 	router.Run("localhost:8080")
 }
-
 ```
 4. Jika sudah membuat beberapa controller REST API yang dibutuhkan dan membuat router untuk mengalamatkan services yang dibutuhkan.  
 Ketikan perintah `$ go get .` untuk menginstall modul dependency gin yang diperlukan. setelah proses download dan penambahan modul selesai.
