@@ -1,7 +1,7 @@
 ## Membuat Module Dan Mengakses Module Lain
-1. Pertama buat terlebih dahulu folder untuk module greetings dengan nama "`greetings`"
-2. Buka terminal di folder greetings
-3. Ketik perintah `$ go mod init example.com/greetings`, untuk menginisiasi dependency pada module greetings.
+1. Pertama buat terlebih dahulu folder untuk module `greetings` dengan nama `greetings`
+2. Buka terminal di folder `greetings` 
+3. Ketik perintah `$ go mod init example.com/greetings`, untuk menginisiasi dependency pada module `greetings`.
 4. Kemudian buat file dengan nama `greetings.go` dan ketikan kode berikut : 
     ```go
     package greetings
@@ -15,7 +15,7 @@
         return message
     }
     ```
-5. setelah membuat module `greetings` selanjutnya membuat folder baru untuk module `hello`.
+5. Setelah membuat module `greetings` selanjutnya membuat folder baru untuk module `hello`.
 6. Buka terminal di folder `hello`
 7. Ketik perintah `go mod init example.com/hello`, untuk menginisiasi dependency pada module hello.
 8. Kemudian buat file dengan nama `hello.go` dan ketikan kode berikut :
@@ -34,7 +34,7 @@
         fmt.Println(message)
     }
     ```
-9. setelah membuat 2 module, "`greetings`" dan "`hello`". selanjutnya kita edit module hello agar bisa mengakses atau mengimport module greetings.  
+9. Setelah membuat 2 module, "`greetings`" dan "`hello`". selanjutnya kita edit module hello agar bisa mengakses atau mengimport module greetings.  
 caranya adalah mengetik perintah  
 `$ go mod edit -replace example.com/greetings=../greetings`  
 dan jika sukses akan muncul pada `go.mod` hello seperti berikut ini :  
@@ -46,7 +46,7 @@ dan jika sukses akan muncul pada `go.mod` hello seperti berikut ini :
         // akan muncul ini
         replace example.com/greetings => ../greetings
     ```
-10. lalu selanjutnya tahap akhir mengsinkronkan dependency yang sebelumnya diubah selanjutnya ketikan perintah berikut  
+10. Lalu selanjutnya tahap akhir mengsinkronkan dependency yang sebelumnya diubah selanjutnya ketikan perintah berikut  
 `$ go mod tidy`
-11. untuk menjalankan nya, buka terminal di folder `hello` ketikan perintah  
+11. Untuk menjalankan nya, buka terminal di folder `hello` ketikan perintah  
 `$ go run .`
