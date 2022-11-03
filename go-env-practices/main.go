@@ -16,6 +16,6 @@ func envVariable(key string) string {
 
 func main() {
 	value := envVariable("name")
-	fmt.Printf("os packege: name = %s \n", value)
+	fmt.Printf("os package: name = %s \n", value)
 	fmt.Printf("environment variable = %s \n", os.Getenv("APP_ENV"))
 }
