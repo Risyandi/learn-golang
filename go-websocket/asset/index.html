@@ -72,28 +72,33 @@
     <script>
         // initialization socket
         var socket = io("/chat");
+        var socketMain = io("/");
 
         socket.on('reply', function (textValue) {
             $('#outputMessage').append($('<li>').text("reply: " + textValue));
         });
 
-        socket.on('typing', function (textValue) {
-            $('#feedbackMessage').append($('<li>').text("typing: " + textValue));
+        socket.on('broadcastAll', function (textValue) {
+            // $('#feedbackMessage').append($('<li>').text("typing: " + textValue));
+            $('#feedbackMessage').html(textValue + ": typing....")
         });
 
         $('#messageInput').keypress(function (params) {
-            console.log("keypress");
             var nameInput = $('#nameInput').val();
-            socket.emit('typing', nameInput);
+            var lengthNameInput = nameInput.length;
+            if (lengthNameInput > 0) {
+                // socket.emit('typing', nameInput);
+                socketMain.emit('broadcast', nameInput);
+            }
         })
 
         $('form').submit(function (param) {
             console.log("submit");
-            var nameInput = $('#nameInput').val();
-            var messageInput = $('#messageInput').val();
-            socket.emit('reply', nameInput);
-            socket.emit('typing', messageInput);
-            return false;
+            // var nameInput = $('#nameInput').val();
+            // var messageInput = $('#messageInput').val();
+            // socket.emit('reply', nameInput);
+            // socket.emit('typing', messageInput);
+            // return false;
         });
     </script>
 </body>
