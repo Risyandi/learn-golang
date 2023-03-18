@@ -53,27 +53,52 @@
 </head>
 
 <body>
-    <ul id="messagesResult"></ul>
-    <form action="">
-        <input id="messageInput" autocomplete="off" /><button>Send</button>
-    </form>
+    <div class="wrapSocket">
+        <ul id="outputMessage">
+            <!-- when location append for socket event reply -->
+        </ul>
+        <ul id="feedbackMessage">
+            <!-- when location append for socket event typing -->
+        </ul>
+        <form action="">
+            <input id="nameInput" placeholder="fullname" autocomplete="off" />
+            <input id="messageInput" placeholder="message" autocomplete="off" />
+            <button>Send</button>
+        </form>
+    </div>
+
     <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
+        // initialization socket
         var socket = io("/chat");
+        var socketMain = io("/");
 
         socket.on('reply', function (textValue) {
-            $('#messagesResult').append($('<li>').text("user: "+ textValue));
+            $('#outputMessage').append($('<li>').text("reply: " + textValue));
         });
 
+        socket.on('broadcastAll', function (textValue) {
+            // $('#feedbackMessage').append($('<li>').text("typing: " + textValue));
+            $('#feedbackMessage').html(textValue + ": typing....")
+        });
+
+        $('#messageInput').keypress(function (params) {
+            var nameInput = $('#nameInput').val();
+            var lengthNameInput = nameInput.length;
+            if (lengthNameInput > 0) {
+                // socket.emit('typing', nameInput);
+                socketMain.emit('broadcast', nameInput);
+            }
+        })
+
         $('form').submit(function (param) {
-            socket.emit('messageText', $('#messageInput').val(), function (data) {
-                $('#messagesResult').append($('<li>').text("user: " + data));
-            });
-            // socket.emit('messageText', $('#messageInput').val());
-            // socket.emit('notice', $('#messageInput').val());
-            // $('#messageInput').val('');
-            return false;
+            console.log("submit");
+            // var nameInput = $('#nameInput').val();
+            // var messageInput = $('#messageInput').val();
+            // socket.emit('reply', nameInput);
+            // socket.emit('typing', messageInput);
+            // return false;
         });
     </script>
 </body>
