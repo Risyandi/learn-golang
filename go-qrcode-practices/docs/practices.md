@@ -1,8 +1,10 @@
-## Membuat Simple QR Code Generator
+# Membuat Simple QR Code Generator
+
 1. Pertama yang harus dipersiapkan adalah membuat file  *go.mod* sebagai file yang memanajemen package yang digunakan. cara nya adalah dengan mengetikan perintah berikut:  
 `$ go mod go-qrcode-practices`  
 Lalu file akan secara otomatis ter generate dengan sendirinya dengan file baru dengan nama *go.mod* dan *go.sum*  
 2. Buat file baru dengan nama `main.go` dan ketikan kode berikut:  
+
     ```go
         package main
 
@@ -42,9 +44,11 @@ Lalu file akan secara otomatis ter generate dengan sendirinya dengan file baru d
             png.Encode(w, qrCode)
         }
     ```
-3. Lalu install package library "github.com/boombuler/barcode" dengan mengetikan perintah berikut: 
+
+3. Lalu install package library "github.com/boombuler/barcode" dengan mengetikan perintah berikut:
 `$ go get github.com/boombuler/barcode`
 4. Setelah itu buat file html dengan memberikana nama `generator.html` lalu ketikan kode berikut:  
+
     ```html
     <!DOCTYPE html>
     <html lang="en">
@@ -60,9 +64,10 @@ Lalu file akan secara otomatis ter generate dengan sendirinya dengan file baru d
         <form action="generator/" method="post">
             <input type="text" name="dataString">
             <input type="submit" value="Submit">
-        </form>
+        </form>s
     </body>
     </html>
     ```
+
 5. Setelah selesai, aplikasi QR generator ini bisa dijalankan dengan mengetikan perintah berikut:  
 `$ go run main.go`
