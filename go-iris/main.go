@@ -7,20 +7,34 @@ import (
 func main() {
 	app := iris.New()
 
-	booksAPI := app.Party("/books")
+	// grouping routes version 1
+	v1 := app.Party("/v1")
 	{
-		booksAPI.Use(iris.Compression)
+		v1.Use(iris.Compression)
 
-		// GET: http://localhost:8080/books
-		booksAPI.Get("/", list)
-		// POST: http://localhost:8080/books
-		booksAPI.Post("/", create)
+		// GET: http://localhost:8080/v1/books
+		// POST: http://localhost:8080/v1/books
+
+		v1.Get("/books", list)
+		v1.Post("/books", create)
+	}
+
+	// grouping routes version 2
+	v2 := app.Party("/v2")
+	{
+		v2.Use(iris.Compression)
+
+		// GET: http://localhost:8080/v2/books
+		// POST: http://localhost:8080/v2/books
+
+		v2.Get("/books", list)
+		v2.Post("/books", create)
 	}
 
 	app.Listen(":8080")
 }
 
-// Book example.
+// Book struct
 type Book struct {
 	Title string `json:"title"`
 }
@@ -32,11 +46,12 @@ func list(ctx iris.Context) {
 		{"Black Hat Go"},
 	}
 
-	ctx.JSON(books)
 	// TIP: negotiate the response between server's prioritizes
 	// and client's requirements, instead of ctx.JSON:
 	// ctx.Negotiation().JSON().MsgPack().Protobuf()
 	// ctx.Negotiate(books)
+
+	ctx.JSON(books)
 }
 
 func create(ctx iris.Context) {
