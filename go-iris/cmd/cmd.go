@@ -7,28 +7,27 @@ import (
 	"github.com/spf13/cobra"
 )
 
-const defaultConfigFilename = "server.yaml"
+const defaultConfigFilename = "server.yml"
 
 var serverConfig api.Configuration
 
-// new return a new CLI app
-// build with:
-// $ go build -ldflags-"-s -w"
-
+// New returns a new CLI app.
+// Build with:
+// $ go build -ldflags="-s -w"
 func New() *cobra.Command {
 	configFile := defaultConfigFilename
 
 	rootCmd := &cobra.Command{
 		Use:                        "project",
-		Short:                      "command line interface for project",
-		Long:                       "the root command will start the http server",
+		Short:                      "Command line interface for project.",
+		Long:                       "The root command will start the HTTP server.",
 		Version:                    "v0.0.1",
-		SilenceError:               true,
+		SilenceErrors:              true,
 		SilenceUsage:               true,
 		TraverseChildren:           true,
 		SuggestionsMinimumDistance: 1,
-		PersistencePreRunE: func(cmd *cobra.Command, args []string) error {
-			// read config from file before any of the commands run function
+		PersistentPreRunE: func(cmd *cobra.Command, args []string) error {
+			// Read configuration from file before any of the commands run functions.
 			return serverConfig.BindFile(configFile)
 		},
 		RunE: func(cmd *cobra.Command, args []string) error {
@@ -41,14 +40,13 @@ func New() *cobra.Command {
 		BuildTime:            iris.BuildTime,
 		ShowGoRuntimeVersion: true,
 	}
+	rootCmd.SetHelpTemplate(helpTemplate.String())
 
-	rootCmd.setHelpTemplate(helpTemplate.String())
-
-	// shared flags
+	// Shared flags.
 	flags := rootCmd.PersistentFlags()
-	flags.StringVar(&configFile, "config", configFile, "--config=server.yaml a file path which contains the YAML config format")
+	flags.StringVar(&configFile, "config", configFile, "--config=server.yml a filepath which contains the YAML config format")
 
-	// subcommand here.
+	// Subcommands here.
 	// rootCmd.AddCommand(...)
 
 	return rootCmd
