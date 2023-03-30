@@ -1,10 +1,10 @@
 # Golang with Iris Framework  
-in this repository we will learning how to used the Iris framework. learn more about Iris framework can visit this sites https://www.iris-go.com/.
+In this repository we will learning how to used the Iris framework, project structured in Iris framework and if you want to learn more about Iris framework can visit this sites https://www.iris-go.com/.
 
 **Requirement :**
 
 - Golang version 1.20 or above
-- Library Iris framework version 12.2.0
+- Library Iris framework version 12.2.0  
     `$ go get github.com/kataras/iris/v12@latest`  
     learn more at [Iris official documentation](https://www.iris-go.com/docs)
 
@@ -14,3 +14,8 @@ in this repository we will learning how to used the Iris framework. learn more a
     `$ go clean --modcache`
 - Network error during installation Iris  
     `$ go env -w GOPROXY=https://goproxy.io,direct`
+
+**Running :**  
+
+- Running your Iris framework  
+    `$ go run main.go --config=server.yml`
