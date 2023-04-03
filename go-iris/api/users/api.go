@@ -7,21 +7,26 @@ import (
 )
 
 type API struct {
-	Users user.Repository // exported field so api/router.go#api.RegisterDependency can bind it.
+	// exported field so api/router.go#api.RegisterDependency can bind it.
+	Users user.Repository
 }
 
 func (api *API) Configure(r iris.Party) {
+	// Add middlewares such as user verification by bearer token here.
+	// Authenticated routes...
 	r.Post("/signup", api.signUp)
 	r.Post("/signin", api.signIn)
-	// Add middlewares such as user verification by bearer token here.
-
-	// Authenticated routes...
 	r.Get("/", api.getInfo)
 }
 
 func (api *API) getInfo(ctx iris.Context) {
-	ctx.WriteString("...")
+	ctx.WriteString("getInfoFunction")
 }
 
-func (api *API) signUp(ctx iris.Context) {}
-func (api *API) signIn(ctx iris.Context) {}
+func (api *API) signUp(ctx iris.Context) {
+	ctx.WriteString("signupFunction")
+}
+
+func (api *API) signIn(ctx iris.Context) {
+	ctx.WriteString("signinFunction")
+}

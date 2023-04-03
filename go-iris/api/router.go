@@ -13,19 +13,23 @@ import (
 // buildRouter is the most important part of your server.
 // All root endpoints are registered here.
 func (srv *Server) buildRouter() {
+
 	// Add a simple health route.
+	secondsEastOfUTC := int((7 * time.Hour).Seconds())
 	srv.Any("/health", modrevision.New(modrevision.Options{
 		ServerName:   srv.config.ServerName,
 		Env:          srv.config.Env,
-		Developer:    "kataras",
-		TimeLocation: time.FixedZone("Greece/Athens", 7200),
+		Developer:    "Risyandi",
+		TimeLocation: time.FixedZone("indonesian time", secondsEastOfUTC),
 	}))
 
-	api := srv.Party("/api")
+	// grouping api version
+	api := srv.Party("/api/v1")
 	api.RegisterDependency(
 		database.Open(srv.config.ConnString),
 		user.NewRepository,
 	)
 
+	// parent endpoint api
 	api.PartyConfigure("/user", new(users.API))
 }

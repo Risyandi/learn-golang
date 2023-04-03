@@ -116,7 +116,7 @@ func (srv *Server) Start() error {
 		return srv.Application.Run(iris.AutoTLS(
 			":443",
 			srv.config.Domain,
-			"kataras2006@hotmail.com",
+			"risyandi.94@gmail.com",
 		))
 	}
 
