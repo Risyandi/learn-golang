@@ -1,42 +1,26 @@
-package old-main
+package books
+
 import (
+	"go-iris/user"
+
 	iris "github.com/kataras/iris/v12"
 )
-func main() {
-	app := iris.New()
 
-	// grouping routes version 1
-	v1 := app.Party("/v1")
-	{
-		v1.Use(iris.Compression)
-
-		// GET: http://localhost:8080/v1/books
-		// POST: http://localhost:8080/v1/books
-
-		v1.Get("/books", list)
-		v1.Post("/books", create)
-	}
-
-	// grouping routes version 2
-	v2 := app.Party("/v2")
-	{
-		v2.Use(iris.Compression)
-
-		// GET: http://localhost:8080/v2/books
-		// POST: http://localhost:8080/v2/books
-
-		v2.Get("/books", list)
-		v2.Post("/books", create)
-	}
-
-	app.Listen(":8080")
+type API struct {
+	// exported field so api/router.go#api.RegisterDependency can bind it.
+	Users user.Repository
 }
 
 type Book struct {
 	Title string `json:"title"`
 }
 
-func list(ctx iris.Context) {
+func (api *API) Configure(r iris.Party) {
+	r.Post("/create", api.create)
+	r.Get("/", api.list)
+}
+
+func (api *API) list(ctx iris.Context) {
 	books := []Book{
 		{"Mastering Concurrency in Go"},
 		{"Go Design Patterns"},
@@ -51,7 +35,7 @@ func list(ctx iris.Context) {
 	ctx.JSON(books)
 }
 
-func create(ctx iris.Context) {
+func (api *API) create(ctx iris.Context) {
 	var b Book
 	err := ctx.ReadJSON(&b)
 	// TIP: use ctx.ReadBody(&b) to bind
@@ -65,6 +49,6 @@ func create(ctx iris.Context) {
 	}
 
 	println("Received Book: " + b.Title)
-
+	ctx.JSON(b.Title)
 	ctx.StatusCode(iris.StatusCreated)
 }

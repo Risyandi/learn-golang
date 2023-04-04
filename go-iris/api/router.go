@@ -3,6 +3,7 @@ package api
 import (
 	"time"
 
+	"go-iris/api/books"
 	"go-iris/api/users"
 	"go-iris/pkg/database"
 	"go-iris/user"
@@ -32,4 +33,5 @@ func (srv *Server) buildRouter() {
 
 	// parent endpoint api
 	api.PartyConfigure("/user", new(users.API))
+	api.PartyConfigure("/books", new(books.API))
 }
