@@ -3,7 +3,7 @@ In this repository we will learning how to used the Iris framework, project stru
 
 **Requirement :**
 
-- Golang version 1.20 or above
+- Golang version minimum 1.20 or above
 - Library Iris framework version 12.2.0  
     `$ go get github.com/kataras/iris/v12@latest`  
     learn more at [Iris official documentation](https://www.iris-go.com/docs)
