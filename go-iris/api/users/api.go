@@ -1,7 +1,7 @@
 package users
 
 import (
-	"go-iris/user"
+	"go-iris/model/user"
 
 	iris "github.com/kataras/iris/v12"
 )

@@ -1,7 +1,8 @@
 package books
 
 import (
-	"go-iris/user"
+	"go-iris/model/book"
+	"go-iris/model/user"
 
 	iris "github.com/kataras/iris/v12"
 )
@@ -11,20 +12,17 @@ type API struct {
 	Users user.Repository
 }
 
-type Book struct {
-	Title string `json:"title"`
-}
-
 func (api *API) Configure(r iris.Party) {
 	r.Post("/create", api.create)
 	r.Get("/", api.list)
 }
 
 func (api *API) list(ctx iris.Context) {
-	books := []Book{
+	books := []book.Book{
 		{"Mastering Concurrency in Go"},
 		{"Go Design Patterns"},
 		{"Black Hat Go"},
+		{"Go Routine"},
 	}
 
 	// TIP: negotiate the response between server's prioritizes
@@ -36,7 +34,7 @@ func (api *API) list(ctx iris.Context) {
 }
 
 func (api *API) create(ctx iris.Context) {
-	var b Book
+	var b book.Book
 	err := ctx.ReadJSON(&b)
 	// TIP: use ctx.ReadBody(&b) to bind
 	// any type of incoming data instead.
