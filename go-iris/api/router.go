@@ -5,8 +5,8 @@ import (
 
 	"go-iris/api/books"
 	"go-iris/api/users"
+	"go-iris/model/user"
 	"go-iris/pkg/database"
-	"go-iris/user"
 
 	"github.com/kataras/iris/v12/middleware/modrevision"
 )
