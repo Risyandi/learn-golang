@@ -1,0 +1,34 @@
+{
+    "success_get": "sukses mengambil data",
+    "success_create": "sukses menyimpan data",
+    "success_update": "sukses mengubah data",
+    "success_delete": "sukses menghapus data",
+
+
+    "error_response": "Opps. Terjadi kesalahan silahkan coba lagi nanti",
+    "error_not_found": "Data tidak ditemukan",
+    "error_invalid_token": "tidak memiliki izin",
+    "error_invalid_service_token": "token tidak valid",
+    "error_token_expired": "token kadaluarsa",
+    "error_invalid_signature": "kunci tidak valid",
+    "error_account_suspended": "akun ini terkenan suspen",
+    
+    "error_validation_required": "{{.field}} wajib diisi!",
+    "error_validation_email": "{{.field}} harus berisi valid email!",
+    "error_validation_unique": "{{.field}} sudah tersedia",
+    "error_validation_min_length": "{{.field}} harus lebih dari {{.length}} karakter",
+    "error_validation_max_length": "{{.field}} harus kurang dari {{.length}} karakter",
+    "error_validation_numeric": "{{.field}} harus diisi dengan angka",
+    "error_validation_gte": "{{.field}} harus lebih besar atau sama dengan {{.gte}}",
+    "error_validation_gt": "{{.field}} harus lebih besar dari {{.gt}}",
+    "error_validation_lte": "{{.field}} harus lebih kecil atau sama dengan {{.lte}}",
+    "error_validation_lt": "{{.field}} harus lebih kecil dari {{.lte}}",
+    "error_validation_oneof": "{{.field}} harus salah satu dari {{.in}}",
+    "error_validation_uuid": "{{.field}} harus berisi valid uuid!",
+    "error_validation_length": "{{.field}} harus {{.length}} panjang karakter",
+    "error_validation_startwith": "{{.field}} harus diawali dengan {{.start}}",
+    "error_validation_clean_emoji": "{{.field}} tidak boleh mengandung emoji",
+    "error_validation": "{{.field}} tidak valid, wajib diisi dengan {{.tag}}",
+
+    "error_limit_reached": "data sudah melebihi batas"
+}

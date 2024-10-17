@@ -1,0 +1,31 @@
+{
+    "success_get": "success get data",
+    "success_create": "success create data",
+    "success_update": "success update data",
+    "success_delete": "success delete data",
+
+    "error_response": "Opps. Something went wrong please try again!",
+    "error_not_found": "Data not found",
+    "error_invalid_token": "unauthorized",
+    "error_invalid_service_token": "invalid service token",
+    "error_token_expired": "token is expired",
+    "error_invalid_signature": "invalid signature key",
+    "error_account_suspended": "this account is suspended",
+
+    "error_validation_required": "{{.field}} is mandatory",
+    "error_validation_email": "{{.field}} must be a valid email address",
+    "error_validation_unique": "{{.field}} already exists",
+    "error_validation_min_length": "{{.field}} must have at least {{.length}} characters",
+    "error_validation_max_length": "{{.field}} must not exceed {{.length}} characters",
+    "error_validation_numeric": "{{.field}} must be a valid numeric",
+    "error_validation_gte": "{{.field}} value must be greater than or equal to {{.gte}}",
+    "error_validation_lte": "{{.field}} value must be less than or equal to {{.lte}}",
+    "error_validation_oneof": "{{.field}} value must be one of {{.in}}",
+    "error_validation_uuid": "{{.field}} value must be a valid uuid",
+    "error_validation_length": "{{.field}} length must {{.length}} characters",
+    "error_validation_startwith": "{{.field}} value must start with {{.start}}",
+    "error_validation_clean_emoji": "{{.field}} cannot contain emoji",
+    "error_validation": "{{.field}} not valid value, need to implement {{.tag}}",
+
+    "error_limit_reached": "data limit reached"
+}
